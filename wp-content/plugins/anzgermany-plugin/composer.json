@@ -1,0 +1,13 @@
+{
+    "name": "nguyenthienan/anzgermany-plugin",
+    "authors": [
+        {
+            "name": "nguyenthienan",
+            "email": "nguyenthienanz2510@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {"Inc\\": "./inc"}
+    }
+}
