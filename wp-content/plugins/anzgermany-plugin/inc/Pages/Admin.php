@@ -26,6 +26,10 @@ class Admin extends BaseController
 
         $this->setSubPages();
 
+        $this->setSettings();
+        $this->setSections();
+        $this->setFields();
+
         $this->settings->addPages($this->pages)->withSubPage('Dashboard')->addSubPages($this->subpages)->register();
     }
 
@@ -37,7 +41,7 @@ class Admin extends BaseController
                 'menu_title'    => 'AnzGermany',
                 'capability'    => 'manage_options',
                 'menu_slug'     => 'anzgermany_plugin',
-                'callback'      => array( $this->callbacks, 'adminDashboard' ),
+                'callback'      => array($this->callbacks, 'adminDashboard'),
                 'icon_url'      => 'dashicons-coffee',
                 'position'      => 10
             ]
@@ -78,5 +82,51 @@ class Admin extends BaseController
                 },
             ]
         ];
+    }
+
+    public function setSettings()
+    {
+        $args = array(
+            array(
+                'option_group' => 'anzgermany_options_group',
+                'option_name' => 'anzgermany_options_name',
+                'callback' => array($this->callbacks, 'anzgermanyOptionsGroup')
+            ),
+        );
+
+        $this->settings->addSettings($args);
+    }
+
+    public function setSections()
+    {
+        $args = array(
+            array(
+                'id' => 'anzgermany_admin_index',
+                'title' => 'anzgermany_admin_option_title',
+                'callback' => array($this->callbacks, 'anzgermanyAdminSection'),
+                'page' => 'anzgermany_plugin'
+            ),
+        );
+
+        $this->settings->addSections($args);
+    }
+
+    public function setFields()
+    {
+        $args = array(
+            array(
+                'id' => 'anzgermany_options_name',
+                'title' => 'anzgermany_admin_field_title',
+                'callback' => array($this->callbacks, 'anzgermanyAdminField'),
+                'page' => 'anzgermany_plugin',
+                'section' => 'anzgermany_admin_index',
+                'args' => array(
+                    'label_for' => 'anzgermany_options_name',
+                    'class' => 'example-class'
+                )
+            ),
+        );
+
+        $this->settings->addFields($args);
     }
 }
