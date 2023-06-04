@@ -4,32 +4,48 @@ namespace Inc\Pages;
 
 use \Inc\Base\BaseController;
 use \Inc\Api\SettingApi;
+use \Inc\Api\Callbacks\AdminCallbacks;
 
 class Admin extends BaseController
 {
     public $settings;
+
     public $pages;
 
     public $subpages;
 
-    public function __construct()
+    public $callbacks;
+
+    public function register()
     {
         $this->settings = new SettingApi();
 
+        $this->callbacks = new AdminCallbacks();
+
+        $this->setPages();
+
+        $this->setSubPages();
+
+        $this->settings->addPages($this->pages)->withSubPage('Dashboard')->addSubPages($this->subpages)->register();
+    }
+
+    protected function setPages()
+    {
         $this->pages = [
             [
                 'page_title'    => 'AnzGermany Plugin',
                 'menu_title'    => 'AnzGermany',
                 'capability'    => 'manage_options',
                 'menu_slug'     => 'anzgermany_plugin',
-                'callback'      => function () {
-                    echo '<h1>AnzGermany Plugin</h1>';
-                },
+                'callback'      => array( $this->callbacks, 'adminDashboard' ),
                 'icon_url'      => 'dashicons-coffee',
                 'position'      => 10
             ]
         ];
+    }
 
+    protected function setSubPages()
+    {
         $this->subpages = [
             [
                 'parent_slug'   => 'anzgermany_plugin',
@@ -62,10 +78,5 @@ class Admin extends BaseController
                 },
             ]
         ];
-    }
-
-    public function register()
-    {
-        $this->settings->addPages($this->pages)->withSubPage('Dashboard')->addSubPages($this->subpages)->register();
     }
 }
