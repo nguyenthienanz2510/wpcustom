@@ -13,7 +13,7 @@ class Enqueue extends BaseController
 
     function enqueue()
     {
-        wp_enqueue_style('anzgermany-style', $this->plugin_url . 'assets/styles/styles.css');
-        wp_enqueue_script('anzgermany-script', $this->plugin_url . 'assets/js/script.js');
+        wp_enqueue_style('anzgermany-style', $this->plugin_url . 'assets/styles.css');
+        wp_enqueue_script('anzgermany-script', $this->plugin_url . 'assets/scripts.js');
     }
 }

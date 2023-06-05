@@ -80,6 +80,8 @@ $table_prefix = 'wp_';
  * @link https://wordpress.org/documentation/article/debugging-in-wordpress/
  */
 define( 'WP_DEBUG', true );
+define('WP_CACHE', false);     // disable the cache
+define('DISABLE_CACHE', true);  // disable the cache
 
 /* Add any custom values between this line and the "stop editing" line. */
 
