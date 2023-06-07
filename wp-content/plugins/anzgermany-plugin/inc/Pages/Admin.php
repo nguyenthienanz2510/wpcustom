@@ -91,48 +91,15 @@ class Admin extends BaseController
 
     public function setSettings()
     {
-        $args = array(
-            array(
+        $args = array();
+
+        foreach ($this->managers as $key => $value) {
+            $args[] = array(
                 'option_group' => 'anzgermany_plugin_settings',
-                'option_name' => 'cpt_manager',
+                'option_name' => $key,
                 'callback' => array($this->callbacks_manager, 'checkboxSanitize')
-            ),
-            array(
-                'option_group' => 'anzgermany_plugin_settings',
-                'option_name' => 'taxonomy_manager',
-                'callback' => array($this->callbacks_manager, 'checkboxSanitize')
-            ),
-            array(
-                'option_group' => 'anzgermany_plugin_settings',
-                'option_name' => 'media_widget',
-                'callback' => array($this->callbacks_manager, 'checkboxSanitize')
-            ),
-            array(
-                'option_group' => 'anzgermany_plugin_settings',
-                'option_name' => 'testimonial_manager',
-                'callback' => array($this->callbacks_manager, 'checkboxSanitize')
-            ),
-            array(
-                'option_group' => 'anzgermany_plugin_settings',
-                'option_name' => 'templates_manager',
-                'callback' => array($this->callbacks_manager, 'checkboxSanitize')
-            ),
-            array(
-                'option_group' => 'anzgermany_plugin_settings',
-                'option_name' => 'login_manager',
-                'callback' => array($this->callbacks_manager, 'checkboxSanitize')
-            ),
-            array(
-                'option_group' => 'anzgermany_plugin_settings',
-                'option_name' => 'membership_manager',
-                'callback' => array($this->callbacks_manager, 'checkboxSanitize')
-            ),
-            array(
-                'option_group' => 'anzgermany_plugin_settings',
-                'option_name' => 'chat_manager',
-                'callback' => array($this->callbacks_manager, 'checkboxSanitize')
-            ),
-        );
+            );
+        }
 
         $this->settings->addSettings($args);
     }
@@ -153,96 +120,21 @@ class Admin extends BaseController
 
     public function setFields()
     {
-        $args = array(
-            array(
-                'id' => 'cpt_manager',
-                'title' => 'CPT Manager',
+        $args = array();
+
+        foreach ($this->managers as $key => $value) {
+            $args[] = array(
+                'id' => $key,
+                'title' => $value,
                 'callback' => array($this->callbacks_manager, 'checkboxField'),
                 'page' => 'anzgermany_plugin',
                 'section' => 'anzgermany_admin_index',
                 'args' => array(
-                    'label_for' => 'cpt_manager',
+                    'label_for' => $key,
                     'class'   => 'anz-toggle',
                 )
-            ),
-            array(
-                'id' => 'taxonomy_manager',
-                'title' => 'Taxonomy Manager',
-                'callback' => array($this->callbacks_manager, 'checkboxField'),
-                'page' => 'anzgermany_plugin',
-                'section' => 'anzgermany_admin_index',
-                'args' => array(
-                    'label_for' => 'taxonomy_manager',
-                    'class'   => 'anz-toggle',
-                )
-            ),
-            array(
-                'id' => 'media_widget',
-                'title' => 'Media Widget',
-                'callback' => array($this->callbacks_manager, 'checkboxField'),
-                'page' => 'anzgermany_plugin',
-                'section' => 'anzgermany_admin_index',
-                'args' => array(
-                    'label_for' => 'media_widget',
-                    'class'   => 'anz-toggle',
-                )
-            ),
-            array(
-                'id' => 'testimonial_manager',
-                'title' => 'Testimonial Manager',
-                'callback' => array($this->callbacks_manager, 'checkboxField'),
-                'page' => 'anzgermany_plugin',
-                'section' => 'anzgermany_admin_index',
-                'args' => array(
-                    'label_for' => 'testimonial_manager',
-                    'class'   => 'anz-toggle',
-                )
-            ),
-            array(
-                'id' => 'templates_manager',
-                'title' => 'Templates Manager',
-                'callback' => array($this->callbacks_manager, 'checkboxField'),
-                'page' => 'anzgermany_plugin',
-                'section' => 'anzgermany_admin_index',
-                'args' => array(
-                    'label_for' => 'templates_manager',
-                    'class'   => 'anz-toggle',
-                )
-            ),
-            array(
-                'id' => 'login_manager',
-                'title' => 'Login Manager',
-                'callback' => array($this->callbacks_manager, 'checkboxField'),
-                'page' => 'anzgermany_plugin',
-                'section' => 'anzgermany_admin_index',
-                'args' => array(
-                    'label_for' => 'login_manager',
-                    'class'   => 'anz-toggle',
-                )
-            ),
-            array(
-                'id' => 'membership_manager',
-                'title' => 'Membership Manager',
-                'callback' => array($this->callbacks_manager, 'checkboxField'),
-                'page' => 'anzgermany_plugin',
-                'section' => 'anzgermany_admin_index',
-                'args' => array(
-                    'label_for' => 'membership_manager',
-                    'class'   => 'anz-toggle',
-                )
-            ),
-            array(
-                'id' => 'chat_manager',
-                'title' => 'Chat Manager',
-                'callback' => array($this->callbacks_manager, 'checkboxField'),
-                'page' => 'anzgermany_plugin',
-                'section' => 'anzgermany_admin_index',
-                'args' => array(
-                    'label_for' => 'chat_manager',
-                    'class'   => 'anz-toggle',
-                )
-            ),
-        );
+            );
+        }
 
         $this->settings->addFields($args);
     }
