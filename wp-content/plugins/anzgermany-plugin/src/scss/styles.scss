@@ -1,24 +1,3 @@
-.nav-tabs {
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
-    list-style: none;
-    border-bottom: 1px solid gray;
-    gap: 20px;
-}
+@import './modules/tabs';
+@import './modules/checkbox';
 
-.nav-tabs li a {
-    text-decoration: none;
-}
-
-.nav-tabs li.active a {
-    font-weight: bold;
-}
-
-.tab-content .tab-pane {
-    display: none;
-}
-
-.tab-content .tab-pane.active {
-    display: block;
-}
