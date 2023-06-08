@@ -7,7 +7,7 @@ use \Inc\Api\SettingApi;
 use \Inc\Api\Callbacks\AdminCallbacks;
 use \Inc\Api\Callbacks\ManagerCallbacks;
 
-class Admin extends BaseController
+class Dashboard extends BaseController
 {
     public $settings;
 
@@ -91,15 +91,13 @@ class Admin extends BaseController
 
     public function setSettings()
     {
-        $args = array();
-
-        foreach ($this->managers as $key => $value) {
-            $args[] = array(
+        $args = array(
+            array(
                 'option_group' => 'anzgermany_plugin_settings',
-                'option_name' => $key,
+                'option_name' => 'anzgermany_plugin',
                 'callback' => array($this->callbacks_manager, 'checkboxSanitize')
-            );
-        }
+            )
+        );
 
         $this->settings->addSettings($args);
     }
@@ -130,6 +128,7 @@ class Admin extends BaseController
                 'page' => 'anzgermany_plugin',
                 'section' => 'anzgermany_admin_index',
                 'args' => array(
+                    'option_name' => 'anzgermany_plugin',
                     'label_for' => $key,
                     'class'   => 'anz-toggle',
                 )
