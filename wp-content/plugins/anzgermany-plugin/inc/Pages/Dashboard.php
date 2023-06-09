@@ -13,7 +13,7 @@ class Dashboard extends BaseController
 
     public $pages;
 
-    public $subpages;
+    // public $subpages;
 
     public $callbacks;
 
@@ -29,13 +29,14 @@ class Dashboard extends BaseController
 
         $this->setPages();
 
-        $this->setSubPages();
+        // $this->setSubPages();
 
         $this->setSettings();
         $this->setSections();
         $this->setFields();
 
-        $this->settings->addPages($this->pages)->withSubPage('Dashboard')->addSubPages($this->subpages)->register();
+        // $this->settings->addPages($this->pages)->withSubPage('Dashboard')->addSubPages($this->subpages)->register();
+        $this->settings->addPages($this->pages)->withSubPage('Dashboard')->register();
     }
 
     protected function setPages()
@@ -49,42 +50,6 @@ class Dashboard extends BaseController
                 'callback'      => array($this->callbacks, 'adminDashboard'),
                 'icon_url'      => 'dashicons-coffee',
                 'position'      => 10
-            ]
-        ];
-    }
-
-    protected function setSubPages()
-    {
-        $this->subpages = [
-            [
-                'parent_slug'   => 'anzgermany_plugin',
-                'page_title'    => 'Custom Post Types',
-                'menu_title'    => 'CPT',
-                'capability'    => 'manage_options',
-                'menu_slug'     => 'anzgermany_cpt',
-                'callback'      => function () {
-                    echo '<h1>Custom Post Types Manager</h1>';
-                },
-            ],
-            [
-                'parent_slug'   => 'anzgermany_plugin',
-                'page_title'    => 'Custom Taxonomies',
-                'menu_title'    => 'Taxonomies',
-                'capability'    => 'manage_options',
-                'menu_slug'     => 'anzgermany_taxonomies',
-                'callback'      => function () {
-                    echo '<h1>Custom Taxonomies Manager</h1>';
-                },
-            ],
-            [
-                'parent_slug'   => 'anzgermany_plugin',
-                'page_title'    => 'Custom Widgets',
-                'menu_title'    => 'Widgets',
-                'capability'    => 'manage_options',
-                'menu_slug'     => 'anzgermany_widgets',
-                'callback'      => function () {
-                    echo '<h1>Custom Widgets Manager</h1>';
-                },
             ]
         ];
     }

@@ -18,12 +18,18 @@ class BaseController
         $this->managers = array(
             'cpt_manager' => "CPT Manager",
             'taxonomy_manager' => "Taxonomy Manager",
-            'media_widget' => "Media Widget",
+            'widget_manager' => "Widget Manager",
             'testimonial_manager' => "Testimonial Manager",
             'templates_manager' => "Templates Manager",
             'login_manager' => "Login Manager",
             'membership_manager' => "Membership Manager",
             'chat_manager' => "Chat Manager",
         );
+    }
+
+    protected function activated(string $key)
+    {
+        $option = get_option('anzgermany_plugin');
+        return isset($option[$key]) ? $option[$key] : false;
     }
 }
