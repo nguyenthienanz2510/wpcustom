@@ -9,12 +9,17 @@ use \Inc\Api\Callbacks\AdminCallbacks;
 class CustomPostTypeController extends BaseController
 {
     public $settings;
+
     public $callbacks;
+
     public $subpages = array();
 
-    public function register () {
-        
-        if (! $this->activated('cpt_manager')) return;
+    public $custom_post_types = array();
+
+    public function register()
+    {
+
+        if (!$this->activated('cpt_manager')) return;
 
         $this->settings = new SettingApi();
 
@@ -24,7 +29,11 @@ class CustomPostTypeController extends BaseController
 
         $this->settings->addSubPages($this->subpages)->register();
 
-        add_action('init', array($this, 'activate'));
+        $this->storeCustomPostType();
+
+        if ($this->custom_post_types) {
+            add_action('init', array($this, 'registerCustomPostTypes'));
+        }
     }
 
     protected function setSubPages()
@@ -43,14 +52,37 @@ class CustomPostTypeController extends BaseController
         ];
     }
 
-    public function activate () {
-        register_post_type('anz_post', array(
-            'labels' => array(
+    public function storeCustomPostType()
+    {
+        $this->custom_post_types = array(
+            array(
+                'post_type' => 'anz_post',
                 'name' => 'Anz posts',
                 'singular_name' => 'Anz post',
+                'public' => true,
+                'has_archive' => true
             ),
-            'public' => true,
-            'has_archive' => true
-        ));
+            array(
+                'post_type' => 'anz_book',
+                'name' => 'Anz books',
+                'singular_name' => 'Anz book',
+                'public' => true,
+                'has_archive' => true
+            )
+        );
+    }
+
+    public function registerCustomPostTypes()
+    {
+        foreach ($this->custom_post_types as $post_type) {
+            register_post_type($post_type['post_type'], array(
+                'labels' => array(
+                    'name' => $post_type['name'],
+                    'singular_name' => $post_type['singular_name'],
+                ),
+                'public' => $post_type['public'],
+                'has_archive' => $post_type['has_archive']
+            ));
+        }
     }
 }
