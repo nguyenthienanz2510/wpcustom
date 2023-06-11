@@ -1,0 +1,34 @@
+2023-06-09T16:27:08+00:00 CRITICAL Uncaught TypeError: call_user_func_array(): Argument #1 ($callback) must be a valid callback, cannot access protected method Inc\Base\CustomCatWooController::custom_category_image_field() in /var/www/html/wpcustom/wp-includes/class-wp-hook.php:308
+Stack trace:
+#0 /var/www/html/wpcustom/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#1 /var/www/html/wpcustom/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#2 /var/www/html/wpcustom/wp-admin/edit-tags.php(542): do_action('product_cat_add...', 'product_cat')
+#3 {main}
+  thrown in /var/www/html/wpcustom/wp-includes/class-wp-hook.php on line 308
+
+2023-06-09T16:36:09+00:00 CRITICAL Uncaught TypeError: call_user_func_array(): Argument #1 ($callback) must be a valid callback, function "save_category_banner_meta" not found or invalid function name in /var/www/html/wpcustom/wp-includes/class-wp-hook.php:310
+Stack trace:
+#0 /var/www/html/wpcustom/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#1 /var/www/html/wpcustom/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#2 /var/www/html/wpcustom/wp-includes/taxonomy.php(2600): do_action('create_product_...', 16, 16, Array)
+#3 /var/www/html/wpcustom/wp-admin/includes/ajax-actions.php(1081): wp_insert_term('Marble', 'product_cat', Array)
+#4 /var/www/html/wpcustom/wp-includes/class-wp-hook.php(308): wp_ajax_add_tag('')
+#5 /var/www/html/wpcustom/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#6 /var/www/html/wpcustom/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#7 /var/www/html/wpcustom/wp-admin/admin-ajax.php(188): do_action('wp_ajax_add-tag')
+#8 {main}
+  thrown in /var/www/html/wpcustom/wp-includes/class-wp-hook.php on line 310
+
+2023-06-09T16:37:48+00:00 CRITICAL Uncaught TypeError: call_user_func_array(): Argument #1 ($callback) must be a valid callback, function "save_category_banner_meta" not found or invalid function name in /var/www/html/wpcustom/wp-includes/class-wp-hook.php:310
+Stack trace:
+#0 /var/www/html/wpcustom/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#1 /var/www/html/wpcustom/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#2 /var/www/html/wpcustom/wp-includes/taxonomy.php(2600): do_action('create_product_...', 17, 17, Array)
+#3 /var/www/html/wpcustom/wp-admin/includes/ajax-actions.php(1081): wp_insert_term('Inner Rhythm', 'product_cat', Array)
+#4 /var/www/html/wpcustom/wp-includes/class-wp-hook.php(308): wp_ajax_add_tag('')
+#5 /var/www/html/wpcustom/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#6 /var/www/html/wpcustom/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#7 /var/www/html/wpcustom/wp-admin/admin-ajax.php(188): do_action('wp_ajax_add-tag')
+#8 {main}
+  thrown in /var/www/html/wpcustom/wp-includes/class-wp-hook.php on line 310
+

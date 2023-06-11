@@ -19,11 +19,6 @@ class BaseController
             'cpt_manager' => "CPT Manager",
             'taxonomy_manager' => "Taxonomy Manager",
             'widget_manager' => "Widget Manager",
-            'testimonial_manager' => "Testimonial Manager",
-            'templates_manager' => "Templates Manager",
-            'login_manager' => "Login Manager",
-            'membership_manager' => "Membership Manager",
-            'chat_manager' => "Chat Manager",
         );
     }
 

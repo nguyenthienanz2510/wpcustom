@@ -61,13 +61,6 @@ class CustomPostTypeController extends BaseController
                 'singular_name' => 'Anz post',
                 'public' => true,
                 'has_archive' => true
-            ),
-            array(
-                'post_type' => 'anz_book',
-                'name' => 'Anz books',
-                'singular_name' => 'Anz book',
-                'public' => true,
-                'has_archive' => true
             )
         );
     }
