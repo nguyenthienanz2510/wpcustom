@@ -1,0 +1,4 @@
+*** Copenhagen Theme Changelog ***
+
+2022-12-22 - version 1.0.0
+* Initial release

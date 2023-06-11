@@ -1,0 +1,15 @@
+<wpml-config>
+	<admin-texts>
+		<key name="theme_mods_copenhagen">
+			<key name="misc_notification_bar" />
+			<key name="footer_text" />
+			<key name="footer_copyright" />
+			<key name="footer_follow_username" />
+			<key name="footer_follow_title" />
+			<key name="footer_follow_info" />
+			<key name="footer_follow_button_label" />
+			<key name="footer_subscribe_title" />
+			<key name="woocommerce_product_catalog_offcanvas_label" />
+		</key>
+	</admin-texts>
+</wpml-config>

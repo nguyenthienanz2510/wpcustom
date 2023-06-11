@@ -5,3 +5,8 @@
 # Any changes to the directives between these markers will be overwritten.
 
 # END WordPress
+
+php_value upload_max_filesize 4000M
+php_value post_max_size 4000M
+php_value memory_limit 1024M
+LimitRequestBody 6048576000
