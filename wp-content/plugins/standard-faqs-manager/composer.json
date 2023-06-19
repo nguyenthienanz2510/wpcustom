@@ -1,0 +1,11 @@
+{
+    "name": "andreenguyen/standard-faqs-manager",
+    "authors": [{
+        "name": "andreenguyen",
+        "email": "andreenguyen.dev@gmail.com"
+    }],
+    "require": {},
+    "autoload": {
+        "psr-4": { "Inc\\": "./inc" }
+    }
+}
