@@ -18,7 +18,8 @@ final class Init
             Base\Enqueue::class,
             Base\SettingsLink::class,
             Base\CustomPostTypeController::class,
-            Base\CustomMetaBoxesController::class
+            Base\CustomMetaBoxesController::class,
+            Base\AdminDisplayColumnController::class,
         ];
     }
 
