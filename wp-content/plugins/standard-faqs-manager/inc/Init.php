@@ -20,6 +20,7 @@ final class Init
             Base\CustomPostTypeController::class,
             Base\CustomMetaBoxesController::class,
             Base\AdminDisplayColumnController::class,
+            Base\AdminSettingsController::class,
         ];
     }
 
