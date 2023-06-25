@@ -158,17 +158,17 @@ class AdminSettingsController extends BaseController
         switch ($type) {
             case 'text':
         ?>
-                <input type="text" name="standard_faqs_manager_options[<?= $args['label_for'] ?>]" value="<?= $options[$args['label_for']]?>" class="<?= $args['class'] ?>" />
+                <input type="text" name="standard_faqs_manager_options[<?= $args['label_for'] ?>]" value="<?= (isset($options[$args['label_for']]) ? $options[$args['label_for']] : '') ?>" class="<?= $args['class'] ?>" />
             <?php
                 break;
             case 'number':
             ?>
-                <input type="number" name="standard_faqs_manager_options[<?= $args['label_for'] ?>]" value="<?= $options[$args['label_for']]?>" class="<?= $args['class'] ?>" />
+                <input type="number" name="standard_faqs_manager_options[<?= $args['label_for'] ?>]" value="<?= (isset($options[$args['label_for']]) ? $options[$args['label_for']] : '') ?>" class="<?= $args['class'] ?>" />
             <?php
                 break;
             case 'password':
             ?>
-                <input type="password" name="standard_faqs_manager_options[<?= $args['label_for'] ?>" value="<?= $options[$args['label_for']]?>" class="<?= $args['class'] ?>]" />
+                <input type="password" name="standard_faqs_manager_options[<?= $args['label_for'] ?>" value="<?= (isset($options[$args['label_for']]) ? $options[$args['label_for']] : '') ?>" class="<?= $args['class'] ?>]" />
 <?php
                 break;
         }
