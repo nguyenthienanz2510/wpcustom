@@ -14,7 +14,7 @@ class AdminSettingsController extends BaseController
     public function register()
     {
         add_action('admin_menu', array($this, 'add_faq_submenu'));
-        add_action('admin_init', array($this, 'standard_faqs_manager_settings_init'));
+        add_action('admin_init', array($this, 'sfm_settings_init'));
     }
 
     public function add_faq_submenu()
@@ -24,7 +24,7 @@ class AdminSettingsController extends BaseController
             'FAQ Settings',
             'Settings',
             'manage_options',
-            'faq-settings',
+            'sfm-settings',
             array($this, 'faq_settings_page'),
         );
     }
@@ -47,8 +47,8 @@ class AdminSettingsController extends BaseController
             <h1><?php echo esc_html(get_admin_page_title()); ?></h1>
             <form action="options.php" method="post">
                 <?php
-                settings_fields('standard_faqs_manager_settings_page');
-                do_settings_sections('standard_faqs_manager_settings_page');
+                settings_fields('sfm_settings_page');
+                do_settings_sections('sfm_settings_page');
                 submit_button('Save Settings');
                 ?>
             </form>
@@ -56,119 +56,119 @@ class AdminSettingsController extends BaseController
         <?php
     }
 
-    public function standard_faqs_manager_settings_init()
+    public function sfm_settings_init()
     {
-        register_setting('standard_faqs_manager_settings_page', 'standard_faqs_manager_options');
+        register_setting('sfm_settings_page', 'sfm_options');
 
         add_settings_section(
-            'standard_faqs_manager_section_general',
+            'sfm_section_general',
             __('Standard Faqs Manager general options', 'standard-faqs-manager'),
-            array($this, 'standard_faqs_manager_section_general_callback'),
-            'standard_faqs_manager_settings_page'
+            array($this, 'sfm_section_general_callback'),
+            'sfm_settings_page'
         );
 
         add_settings_field(
-            'standard_faqs_manager_field_quantity_faqs_display_per_section_faqs_type',
+            'sfm_field_quantity_faqs_display_per_section_faqs_type',
             __('Quantity Faqs display per Section Faqs Type', 'standard-faqs-manager'),
-            array($this, 'standard_faqs_manager_field_render'),
-            'standard_faqs_manager_settings_page',
-            'standard_faqs_manager_section_general',
+            array($this, 'sfm_field_render'),
+            'sfm_settings_page',
+            'sfm_section_general',
             array(
-                'label_for'         => 'standard_faqs_manager_field_quantity_faqs_display_per_section_faqs_type',
+                'label_for'         => 'sfm_field_quantity_faqs_display_per_section_faqs_type',
                 'type'              => 'number',
                 'class'             => 'form-control regular-text',
             )
         );
 
         add_settings_field(
-            'standard_faqs_manager_field_quantity_faqs_display_per_faqs_type_page',
+            'sfm_field_quantity_faqs_display_per_faqs_type_page',
             __('Quantity Faqs display per Faqs Type Page', 'standard-faqs-manager'),
-            array($this, 'standard_faqs_manager_field_render'),
-            'standard_faqs_manager_settings_page',
-            'standard_faqs_manager_section_general',
+            array($this, 'sfm_field_render'),
+            'sfm_settings_page',
+            'sfm_section_general',
             array(
-                'label_for'         => 'standard_faqs_manager_field_quantity_faqs_display_per_faqs_type_page',
+                'label_for'         => 'sfm_field_quantity_faqs_display_per_faqs_type_page',
                 'type'              => 'number',
                 'class'             => 'form-control regular-text',
             )
         );
 
         add_settings_field(
-            'standard_faqs_manager_field_quantity_related_faqs_display',
+            'sfm_field_quantity_related_faqs_display',
             __('Quantity Related Faqs display', 'standard-faqs-manager'),
-            array($this, 'standard_faqs_manager_field_render'),
-            'standard_faqs_manager_settings_page',
-            'standard_faqs_manager_section_general',
+            array($this, 'sfm_field_render'),
+            'sfm_settings_page',
+            'sfm_section_general',
             array(
-                'label_for'         => 'standard_faqs_manager_field_quantity_related_faqs_display',
+                'label_for'         => 'sfm_field_quantity_related_faqs_display',
                 'type'              => 'number',
                 'class'             => 'form-control regular-text',
             )
         );
 
         add_settings_section(
-            'standard_faqs_manager_section_typography',
+            'sfm_section_typography',
             __('Standard Faqs Manager Typography options', 'standard-faqs-manager'),
-            array($this, 'standard_faqs_manager_section_typography_callback'),
-            'standard_faqs_manager_settings_page'
+            array($this, 'sfm_section_typography_callback'),
+            'sfm_settings_page'
         );
 
         add_settings_field(
-            'standard_faqs_manager_field_heading_color',
+            'sfm_field_heading_color',
             __('Heading color', 'standard-faqs-manager'),
-            array($this, 'standard_faqs_manager_field_render'),
-            'standard_faqs_manager_settings_page',
-            'standard_faqs_manager_section_typography',
+            array($this, 'sfm_field_render'),
+            'sfm_settings_page',
+            'sfm_section_typography',
             array(
-                'label_for'         => 'standard_faqs_manager_field_heading_color',
+                'label_for'         => 'sfm_field_heading_color',
                 'type'              => 'text',
                 'class'             => 'form-control regular-text',
             )
         );
 
         add_settings_field(
-            'standard_faqs_manager_field_text_color',
+            'sfm_field_text_color',
             __('Text color', 'standard-faqs-manager'),
-            array($this, 'standard_faqs_manager_field_render'),
-            'standard_faqs_manager_settings_page',
-            'standard_faqs_manager_section_typography',
+            array($this, 'sfm_field_render'),
+            'sfm_settings_page',
+            'sfm_section_typography',
             array(
-                'label_for'         => 'standard_faqs_manager_field_text_color',
+                'label_for'         => 'sfm_field_text_color',
                 'type'              => 'text',
                 'class'             => 'form-control regular-text',
             )
         );
     }
 
-    public function standard_faqs_manager_section_general_callback()
+    public function sfm_section_general_callback()
     {
         echo '<p>Standard Faqs Manager General options</p>';
     }
 
-    public function standard_faqs_manager_section_typography_callback()
+    public function sfm_section_typography_callback()
     {
         echo '<p>Standard Faqs Manager Typography options</p>';
     }
 
-    public function standard_faqs_manager_field_render($args)
+    public function sfm_field_render($args)
     {
         $type = isset($args['type']) ? $args['type'] : 'text';
-        $options = get_option('standard_faqs_manager_options');
+        $options = get_option('sfm_options');
 
         switch ($type) {
             case 'text':
         ?>
-                <input type="text" name="standard_faqs_manager_options[<?= $args['label_for'] ?>]" value="<?= (isset($options[$args['label_for']]) ? $options[$args['label_for']] : '') ?>" class="<?= $args['class'] ?>" />
+                <input type="text" name="sfm_options[<?= $args['label_for'] ?>]" value="<?= (isset($options[$args['label_for']]) ? $options[$args['label_for']] : '') ?>" class="<?= $args['class'] ?>" />
             <?php
                 break;
             case 'number':
             ?>
-                <input type="number" name="standard_faqs_manager_options[<?= $args['label_for'] ?>]" value="<?= (isset($options[$args['label_for']]) ? $options[$args['label_for']] : '') ?>" class="<?= $args['class'] ?>" />
+                <input type="number" name="sfm_options[<?= $args['label_for'] ?>]" value="<?= (isset($options[$args['label_for']]) ? $options[$args['label_for']] : '') ?>" class="<?= $args['class'] ?>" />
             <?php
                 break;
             case 'password':
             ?>
-                <input type="password" name="standard_faqs_manager_options[<?= $args['label_for'] ?>" value="<?= (isset($options[$args['label_for']]) ? $options[$args['label_for']] : '') ?>" class="<?= $args['class'] ?>]" />
+                <input type="password" name="sfm_options[<?= $args['label_for'] ?>" value="<?= (isset($options[$args['label_for']]) ? $options[$args['label_for']] : '') ?>" class="<?= $args['class'] ?>]" />
 <?php
                 break;
         }

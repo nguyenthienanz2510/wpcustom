@@ -10,7 +10,7 @@ if (!defined('WP_UNINSTALL_PLUGIN')) {
     die;
 }
 
-delete_option('standard_faqs_manager_options');
+delete_option('sfm_options');
 
 global $wpdb;
 $wpdb->query("DELETE FROM wp_posts WHERE post_type = 'faq'");

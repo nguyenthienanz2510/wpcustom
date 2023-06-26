@@ -28,17 +28,17 @@ if (file_exists(dirname(__FILE__) . '/vendor/autoload.php')) {
     require_once dirname(__FILE__) . '/vendor/autoload.php';
 }
 
-function activate_standard_faqs_manager()
+function activate_sfm()
 {
     Inc\Base\Activate::activate();
 }
-register_activation_hook(__FILE__, 'activate_standard_faqs_manager');
+register_activation_hook(__FILE__, 'activate_sfm');
 
-function deactivate_standard_faqs_manager()
+function deactivate_sfm()
 {
     Inc\Base\Deactivate::deactivate();
 }
-register_deactivation_hook(__FILE__, 'deactivate_standard_faqs_manager');
+register_deactivation_hook(__FILE__, 'deactivate_sfm');
 
 if (class_exists('Inc\\Init')) {
     Inc\Init::register_services();

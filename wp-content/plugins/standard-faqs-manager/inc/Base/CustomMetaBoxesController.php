@@ -26,7 +26,7 @@ class CustomMetaBoxesController extends BaseController
         $screens = ['faq'];
         foreach ($screens as $screen) {
             add_meta_box(
-                'standard_faqs_manager_custom_meta_box',
+                'sfm_custom_meta_box',
                 'FAQs options',
                 array($this, 'customBoxHtml'),
                 $screen
@@ -56,7 +56,7 @@ class CustomMetaBoxesController extends BaseController
             update_post_meta(
                 $post_id,
                 'banner_image',
-                $_POST['banner_image']
+                sanitize_text_field($_POST['banner_image'])
             );
         }
 
@@ -64,7 +64,7 @@ class CustomMetaBoxesController extends BaseController
             update_post_meta(
                 $post_id,
                 'banner_image_xs',
-                $_POST['banner_image_xs']
+                sanitize_text_field($_POST['banner_image_xs'])
             );
         }
     }
@@ -88,7 +88,7 @@ class CustomMetaBoxesController extends BaseController
             update_term_meta(
                 $term_id,
                 'image',
-                $_POST['image']
+                sanitize_text_field($_POST['image'])
             );
         }
 
