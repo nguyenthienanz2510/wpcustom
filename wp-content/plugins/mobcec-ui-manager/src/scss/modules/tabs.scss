@@ -1,0 +1,23 @@
+.nav-tabs {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  list-style: none;
+  border-bottom: 1px solid gray;
+  gap: 20px;
+  li a {
+    text-decoration: none;
+  }
+  li.active a {
+    font-weight: bold;
+  }
+}
+
+.tab-content {
+  .tab-pane {
+    display: none;
+    &.active {
+      display: block;
+    }
+  }
+}

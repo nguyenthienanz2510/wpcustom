@@ -1,0 +1,13 @@
+{
+    "name": "nguyenthienan/mobcec-standard-banner",
+    "authors": [
+        {
+            "name": "nguyenthienan",
+            "email": "nguyenthienan@mobcec.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {"Inc\\": "./inc"}
+    }
+}
