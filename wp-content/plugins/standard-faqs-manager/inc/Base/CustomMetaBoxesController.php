@@ -42,7 +42,7 @@ class CustomMetaBoxesController extends BaseController
     public function savePostData(int $post_id)
     {
 
-        if ($_POST['post_type'] !== 'faq') return;
+        if (!isset($_POST['post_type']) || $_POST['post_type'] !== 'faq') return;
 
         if (array_key_exists('order', $_POST)) {
             update_post_meta(
